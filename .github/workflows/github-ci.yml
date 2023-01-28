@@ -1,8 +1,5 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
-# Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
@@ -13,16 +10,11 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       
       - name: Install Java and Maven
@@ -33,36 +25,9 @@ jobs:
           
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
-      #- name: Run the Gradle package task
-      #  uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
-      #  with:
-      #    arguments: jar
 
       - name: Run
         run: java -version
-
-      - name: Run
-        run: ls
-
-      - name: Run ls /home/runner/work/
-        run: ls /home/runner/work/
-
-      - name: Run ls /home/runner/work/groovy-study
-        run: ls /home/runner/work/groovy-study
-
-      - name: Run ls /home/runner/work/groovy-study/groovy-study
-        run: ls /home/runner/work/groovy-study/groovy-study
-
-      #- name: Run
-      #  run: cat /home/runner/work/_temp/2b5d7717-476d-450f-ae12-e7f466d492f4.sh
-
-      #- name: Run
-      #  run: ./gradlew jar
-
-      #- name: Build with Gradle
-      #  uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
-      #  with:
-      #    arguments: jar
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
