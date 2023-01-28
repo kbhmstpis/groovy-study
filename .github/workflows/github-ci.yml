@@ -43,6 +43,15 @@ jobs:
       - name: Run
         run: ls
 
+      - name: Run
+        run: ls /home/runner/work/
+
+      - name: Run
+        run: ls /home/runner/work/groovy-study
+
+      - name: Run
+        run: ls /home/runner/work/groovy-study/groovy-study
+
       #- name: Run
       #  run: ./gradlew jar
 
