@@ -56,10 +56,16 @@ jobs:
       #- name: Run
       #  run: ./gradlew jar
 
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
-        with:
-          arguments: jar
+      #- name: Build with Gradle
+      #  uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+      #  with:
+      #    arguments: jar
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Execute Gradle build
+        run: ./gradlew build
 
       - name: Run
         run: java -jar hw01-gradle/build/libs/hw01-gradle-1.0-SNAPSHOT.jar
