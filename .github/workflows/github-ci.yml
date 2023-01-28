@@ -38,7 +38,7 @@ jobs:
       #    arguments: jar
 
       - name: Run
-        run: gradlew jar
+        run: /home/runner/work/groovy-study/gradlew jar
 
       - name: Run
         run: java -jar hw01-gradle/build/libs/hw01-gradle-1.0-SNAPSHOT.jar
