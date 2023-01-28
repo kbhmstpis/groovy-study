@@ -38,6 +38,12 @@ jobs:
       #    arguments: jar
 
       - name: Run
+        run: java -v
+
+      - name: Run
+        run: ls
+
+      - name: Run
         run: /home/runner/work/groovy-study/gradlew jar
 
       - name: Run
