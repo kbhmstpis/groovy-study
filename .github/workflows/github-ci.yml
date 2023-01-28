@@ -44,17 +44,17 @@ jobs:
       - name: Run
         run: ls
 
-      - name: Run
+      - name: Run ls /home/runner/work/
         run: ls /home/runner/work/
 
-      - name: Run
+      - name: Run ls /home/runner/work/groovy-study
         run: ls /home/runner/work/groovy-study
 
-      - name: Run
+      - name: Run ls /home/runner/work/groovy-study/groovy-study
         run: ls /home/runner/work/groovy-study/groovy-study
 
-      - name: Run
-        run: cat /home/runner/work/_temp/2b5d7717-476d-450f-ae12-e7f466d492f4.sh
+      #- name: Run
+      #  run: cat /home/runner/work/_temp/2b5d7717-476d-450f-ae12-e7f466d492f4.sh
 
       #- name: Run
       #  run: ./gradlew jar
@@ -67,8 +67,12 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
+
+      - name: Run chmod
+        run: chmod +x gradlew
+
       - name: Execute Gradle build
         run: ./gradlew jar
 
-      - name: Run
+      - name: Run jar
         run: java -jar hw01-gradle/build/libs/hw01-gradle-1.0-SNAPSHOT.jar
