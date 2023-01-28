@@ -9,7 +9,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
+  
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -24,11 +24,18 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+      
+      - name: Install Java and Maven
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+          
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+      - name: Run the Gradle package task
+        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+        with:
+          arguments: -I groovy-study:hw01-gradle [jar]     
 
-      # Runs a single command using the runners shell
-      - name: build
-        run: gradle -I groovy-study:hw01-gradle [jar]
-
-      # Runs a set of commands using the runners shell
       - name: Run
         run: java -jar hw01-gradle/build/libs/hw01-gradle-1.0-SNAPSHOT.jar
