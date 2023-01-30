@@ -36,8 +36,11 @@ jobs:
       - name: Run chmod
         run: chmod +x gradlew
 
+      - name: Execute Test
+        run: ./gradlew test
+
       - name: Execute Gradle build
         run: ./gradlew jar
 
-      - name: Run jar
+      - name: Run jar hw01-gradle
         run: java -jar hw01-gradle/build/libs/hw01-gradle-1.0-SNAPSHOT.jar
