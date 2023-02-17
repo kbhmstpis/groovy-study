@@ -126,4 +126,38 @@ class TodoTest {
 
     }
 
+    @Test
+    void getTaskCountByDay() {
+        Todo todo = new Todo()
+        todo.addTask("Task 01", "2023-01-25T14:00:00", 1, "HOURS")
+        todo.addTask("Task 02", "2023-01-25T16:00:00", 1, "HOURS")
+
+        todo.addTask("Task 03", "2023-01-26T14:00:00", 1, "HOURS")
+        todo.addTask("Task 04", "2023-01-26T15:00:00", 1, "HOURS")
+        todo.addTask("Task 05", "2023-01-26T16:00:00", 1, "HOURS")
+
+        todo.addTask("Task 06", "2023-01-27T14:00:00", 1, "HOURS")
+
+        assertEquals(2, todo.getTaskCountByDay("2023-01-25T14:00:00"))
+        assertEquals(3, todo.getTaskCountByDay("2023-01-26T14:00:00"))
+        assertEquals(1, todo.getTaskCountByDay("2023-01-27T14:00:00"))
+    }
+
+    @Test
+    void genBusyTimeByDay() {
+        Todo todo = new Todo()
+        todo.addTask("Task 01", "2023-01-25T14:00:00", 1, "HOURS")
+        todo.addTask("Task 02", "2023-01-25T16:00:00", 1, "HOURS")
+
+        todo.addTask("Task 03", "2023-01-26T14:00:00", 1, "HOURS")
+        todo.addTask("Task 04", "2023-01-26T15:00:00", 1, "HOURS")
+        todo.addTask("Task 05", "2023-01-26T16:00:00", 1, "HOURS")
+
+        todo.addTask("Task 06", "2023-01-27T14:00:00", 1, "HOURS")
+
+        assertEquals(7200,  todo.genBusyTimeByDay("2023-01-25T14:00:00"))
+        assertEquals(10800, todo.genBusyTimeByDay("2023-01-26T14:00:00"))
+        assertEquals(3600,  todo.genBusyTimeByDay("2023-01-27T14:00:00"))
+    }
+
 }

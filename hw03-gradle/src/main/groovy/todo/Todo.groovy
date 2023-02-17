@@ -2,6 +2,7 @@ package todo
 
 import groovy.transform.PackageScope
 
+import java.time.Duration
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.concurrent.TimeUnit
@@ -110,6 +111,18 @@ class Todo {
         return event
     }
 
+
+    int getTaskCountByDay(String time) {
+        LocalDateTime beginTime = checkTime(time)
+        def cnt = todo.groupBy {it.beginTime.toLocalDate()}
+        return cnt[beginTime.toLocalDate()].size()
+    }
+
+    int genBusyTimeByDay(String time) {
+        LocalDateTime beginTime = checkTime(time)
+        def cnt = todo.groupBy {it.beginTime.toLocalDate()}[beginTime.toLocalDate()]
+                .sum { Duration.between(it.beginTime, it.endTime).toSeconds()}
+    }
 
 
 
